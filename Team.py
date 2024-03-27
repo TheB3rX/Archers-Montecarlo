@@ -17,6 +17,16 @@ class Team(list):
         self.name = name  # Assign the team name
         self.team = [Archer() for _ in range(5)]  # Create a list of Archer instances for the team
 
+    def extraShotDraw(self):
+        # Performs an extra shot for the luckiest archer in a team.
+        maxLuck = 0  # Initialize maximum luck to 0
+        luckiestArcher = None  # Initialize luckiest archer to None
+        for archer in self.team:
+            if archer.luck > maxLuck:
+                maxLuck = archer.luck  # Update maximum luck if luck of the archer is greater
+                luckiestArcher = archer  # Update luckiest archer
+        return luckiestArcher, maxLuck
+
     def updateTeamScore(self, score):
         # Updates the team's score by adding the value of 'score'.
         #
