@@ -9,7 +9,7 @@ def initGame(teamOne, teamTwo):
     # Initializes the archery game between two teams.
     init()  # Initialize colorama for colored output
     table = PrettyTable()  # Create a PrettyTable for displaying game scores
-    table.field_names = [Fore.RED+"Team", Fore.GREEN+"Score"]  # Set table headers with colored text
+    table.field_names = [Fore.RED+"Team", Fore.GREEN+"Score", Fore.BLUE+"Luckiest Player", Fore.YELLOW+"Most Experienced Player"]  # Set table headers with colored text
     games = 1000  # Number of games to be played
 
     # Loop until all games are played
@@ -18,9 +18,16 @@ def initGame(teamOne, teamTwo):
         initRounds(teamOne, teamTwo)  # Start the rounds of the game
         games -= 1  # Decrement games count after each game
 
+    # Get the luckiest player and the player who gained the most experience in the current game
+    luckiest_player_team1, luck_score_team1 = teamOne.extraShotDraw()
+    most_experienced_player_team1 = max(teamOne, key=lambda x: x.EXP)
+
+    luckiest_player_team2, luck_score_team2 = teamTwo.extraShotDraw()
+    most_experienced_player_team2 = max(teamTwo, key=lambda x: x.EXP)
+
     # Add final scores of both teams to the table
-    table.add_row([teamOne.name, teamOne.teamScore])
-    table.add_row([teamTwo.name, teamTwo.teamScore])
+    table.add_row([teamOne.name, teamOne.teamScore, f"{luckiest_player_team1.luck} ({luck_score_team1})", most_experienced_player_team1.EXP])
+    table.add_row([teamTwo.name, teamTwo.teamScore, f"{luckiest_player_team2.luck} ({luck_score_team2})", most_experienced_player_team2.EXP])
     
     # Display gender-wise score comparison for each team
     showTableGenderScore(teamOne, 'Team 1')
