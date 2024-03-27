@@ -10,7 +10,7 @@ def initGame(teamOne, teamTwo):
     init()  # Initialize colorama for colored output
     table = PrettyTable()  # Create a PrettyTable for displaying game scores
     table.field_names = [Fore.RED+"Team", Fore.GREEN+"Score", Fore.BLUE+"Luckiest Player", Fore.YELLOW+"Most Experienced Player"]  # Set table headers with colored text
-    games = 1000  # Number of games to be played
+    games = 20000 # Number of games to be played
 
     # Loop until all games are played
     while games > 0:

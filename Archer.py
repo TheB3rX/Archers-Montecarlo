@@ -36,13 +36,13 @@ class Archer:
         else:
             self.endurance = 35 - random.randint(1, 10)
 
-        # If the number greater than 0.5 gets a value between 25 to to 34
+        # If the number is less than 0.3 luck sets to 1 
         if num <= 0.3:
             self.luck = 1
-        # If the number greater than 0.5 gets a value between 25 to to 34
+        # If the number is between 0.3 and 0.66 the luck sets to 2 
         elif 0.3 < num <= 0.66:
             self.luck = 2
-        # If the number greater than 0.5 gets a value between 25 to to 34
+        # If the number is greater than 0.66 the luck sets to 3 
         else:
             self.luck = 3
         self.max_endurance = self.endurance
@@ -55,6 +55,6 @@ class Archer:
     def resetEndurance(self):
         self.endurance = self.max_endurance
 
-    # Recalculates the luck of 
+    # Recalculates the luck of an archer
     def recalculateLuck(self):
         self.luck = random.uniform(1, 3)
